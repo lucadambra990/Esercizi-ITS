@@ -40,13 +40,20 @@
 # for i in invitated_p:
 #     print(f"Ho trovato un tavolo più grande {i}, siete invitati alla cena, non mancate")
 #Esercizio 3-7
-invitated_p:list = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
-print("Il tavolo non arriverà in tempo per la cena, purtroppo posso invitare solo due persone...")
-invitated_p.pop()
-invitated_p.pop()
-invitated_p.pop()
-for i in invitated_p:
-   print(f" {i} Voi siete ancora invitati vi aspetto")
-del invitated_p[0]
-del invitated_p[0]
-print(invitated_p)   
+# invitated_p:list = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
+# print("Il tavolo non arriverà in tempo per la cena, purtroppo posso invitare solo due persone...")
+# invitated_p.pop()
+# invitated_p.pop()
+# invitated_p.pop()
+# for i in invitated_p:
+#    print(f" {i} Voi siete ancora invitati vi aspetto")
+# del invitated_p[0]
+# del invitated_p[0]
+# print(invitated_p)
+#Esercizio 3-8
+travelPlace:list =["India","Tokyo","Thailandia","Dubai","Svizzera","Lisbona"]
+for i in travelPlace:
+    print("f i posti che vorrei visitare sono") 
+
+
+
