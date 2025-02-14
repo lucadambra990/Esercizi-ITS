@@ -51,9 +51,16 @@
 # del invitated_p[0]
 # print(invitated_p)
 #Esercizio 3-8
-travelPlace:list =["India","Tokyo","Thailandia","Dubai","Svizzera","Lisbona"]
-for i in travelPlace:
-    print("f i posti che vorrei visitare sono") 
+# travelPlace:list =["India","Tokyo","Thailandia","Dubai","Svizzera","Lisbona"]
+# for i in travelPlace:
+#     print(f" i posti che vorrei visitare sono {i}") 
 
+# travelPlace.sort()
+# print(travelPlace)
 
-
+# travelPlace.reverse()
+# print(travelPlace)
+#Esercizio 3-9
+# invitated_p:list = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
+# print(invitated_p.__len__())
+#Esercizio 3-10
