@@ -21,6 +21,13 @@ mountain_list2:list = ["Makalu", "Shishapangma", "Nanga Parbat"]
 mountain_list.extend(mountain_list2)
 print(mountain_list)
 
+print("Ordinazione della lista con i metodi sort, sorted, reverse")
+print(f"Lista sistemata con il metodo sorted {sorted(mountain_list)}")
+mountain_list.sort()
+print(f"Lista sistemata con il metodo sort {mountain_list}")
+mountain_list.reverse()
+print(f"Lista sistemata con il metodo reverse {mountain_list}")
+
 print("Eliminazione della lista tramite del")
 del mountain_list2[0]
 del mountain_list2[1]
