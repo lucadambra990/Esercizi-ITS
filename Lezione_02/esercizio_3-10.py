@@ -1,5 +1,5 @@
 # #Esercizio 3-10
-mountain_list:list = ["Everest", "Kilimangiaro", "Monte Bianco", "K2"]
+mountain_list:list[str] = ["Everest", "Kilimangiaro", "Monte Bianco", "K2"]
 print("Aggiunta di un elemento alla fine della lista con append")
 mountain_list.append("Epomeo")
 print(mountain_list)

@@ -1,5 +1,5 @@
 #Esercizio 3-7
-invitated_p:list = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
+invitated_p:list[str] = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
 print("Il tavolo non arriverà in tempo per la cena, purtroppo posso invitare solo due persone...")
 invitated_p.pop()
 invitated_p.pop()

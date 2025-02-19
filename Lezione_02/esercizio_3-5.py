@@ -1,7 +1,7 @@
 #Esercizio 3-5
-invitated_p:list = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
-invitated_p.pop(3)
-invitated_p.append("Kalidou Koulibaly")
+invitated_p:list[str] = ["Marek Hamsik", "Lorenzo Insigne", "Dries Mertens", "Edison Cavani", "Eziquiel Lavezzi"]
+print(f"{invitated_p[3]} non puoi venire")
+invitated_p.insert(3, "Kalidou Koulibaly")
 print("Sei invitato alla cena " + invitated_p[0])
 print("Sei invitato alla cena " + invitated_p[1])
 print("Sei invitato alla cena " + invitated_p[2])

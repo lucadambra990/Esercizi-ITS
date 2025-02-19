@@ -1,20 +1,20 @@
 #Esercizio 3-8
-travelPlace:list =["India","Tokyo","Thailandia","Dubai","Svizzera","Lisbona"]
-print("Vorrei andare a " + travelPlace[0])
-print("Vorrei andare a " + travelPlace[1])
-print("Vorrei andare a " + travelPlace[2])
-print("Vorrei andare a " + travelPlace[3])
-print("Vorrei andare a " + travelPlace[4])
-print("Vorrei andare a " + travelPlace[5])
+travelPlace:list[str] =["India","Tokyo","Thailandia","Dubai","Svizzera","Lisbona"]
+print(travelPlace)
 
 #Stampe delle diverse ordinazioni della lista
-print(sorted(travelPlace))
-print(sorted(travelPlace, reverse=True))
+print(f"Lista in ordine alfabetico senza modificarla{sorted(travelPlace)}")
+print(f"lista originale {travelPlace}")
+print(f"Lista invertita senza modificarla{sorted(travelPlace, reverse=True)}")
+print(f"lista originale {travelPlace}")
 
 travelPlace.sort()
-print(travelPlace)
+print(f"Lista ordinata in ordine alfabetico ma modificandola{travelPlace}")
+print(f"lista originale ma modificata{travelPlace}")
 travelPlace.sort(reverse=True)
-print(travelPlace)
-
+print(f"lista invertita ma modificandola{travelPlace}")
+print(f"lista originale ma modificata{travelPlace}")
 travelPlace.reverse()
+print(f"lista invertita ma modificandola{travelPlace}")
+print(f"lista originale ma modificata{travelPlace}")
 print(travelPlace)
