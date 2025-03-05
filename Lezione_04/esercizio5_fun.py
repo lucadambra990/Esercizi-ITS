@@ -10,6 +10,3 @@ def add_one_to_list(lista:list[int]):
 lista:list[int] = [1,2,3]
 new_list=add_one_to_list(lista)
 print(new_list)
-
-
-
