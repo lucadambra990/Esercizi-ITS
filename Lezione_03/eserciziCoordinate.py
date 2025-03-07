@@ -13,3 +13,9 @@ match coordinate:
         print("Il punto si trova sul primo quadrante")
     case (X,Y) if X<0 and Y>0:
         print("Il punto si trova nel secondo quadrante")
+    case(X,Y) if X<0 and Y<0:
+        print("Il punto si trova nel terzo quadrante")
+    case(X,Y) if X>0 and Y<0:
+        print("Il punto si trova nel quarto quadrante")
+    case _:
+        print("Errore della sintassi")
