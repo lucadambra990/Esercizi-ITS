@@ -63,3 +63,5 @@ while True:
                 
     elif ruolo =="esci":
         break
+
+#creare funzioni per stampare dizionario
