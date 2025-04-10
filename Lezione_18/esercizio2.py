@@ -5,7 +5,10 @@ def validate_password(password:str):
     if len(password)<20:
         raise ValueError(f"La passwordo è troppo corta")
     for i in password:
-        if i is upper:
+        is_upper=0
+        if i.isupper():
+            is_upper+=1
+        if is_upper < 3:
             raise ValueError(f"La password non rispetta i criteri")
         
 validate_password("hahahahfshhhhouahgvoushgoub")
