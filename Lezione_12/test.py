@@ -27,3 +27,5 @@ catalog.remove_movie("Steven Spielberg", "Ritorno al futuro")
 catalog.remove_movie("Steven Spielberg", "Casper")
 
 print(catalog.getCatalog())
+
+print(catalog.list_directors())

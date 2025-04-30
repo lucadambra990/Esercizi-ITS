@@ -81,3 +81,5 @@ class MovieCatalog:
             if not self.catalog[director_name]:
                 # rimuovi il registra dal catalogo
                 del self.catalog[director_name]
+    def list_directors(self)->list[str]:
+        return list(self.catalog.keys())
