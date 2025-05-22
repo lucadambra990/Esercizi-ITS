@@ -1,5 +1,6 @@
 from typing import Self, Any
 from enum import *
+import re
 
 class Genere(StrEnum):
     uomo = auto()
@@ -96,8 +97,63 @@ class Indirizzo:
             return False
         return self._via == other._via and self._civico == other._civico
 
+class Valuta:
+    def __new__(cls, v:str):
+        if re.fullmatch(r"^[A-Z]{3}$",v):
+            return super().__new__(cls,v)
+        raise ValueError(f"La stringa {v} non è un codice valido")
 
 
+
+class Denaro:
+    '''
+        Rappresenta il tipo di dato concettuale composto
+        con i seguenti campi:
+        - importo: Reale
+        - valuta: Valuta
+    '''
+    _importo:float
+    _valuta:float
+
+    def __init__(self, imp:float, val:Valuta):
+        self._importo = imp
+        self._valuta = val
+
+    def importo(self)->float:
+        return self._importo
+    
+    def valuta(self)->Valuta:
+        return self._valuta
+    
+    def __str__(self):
+        return f"{self.importo()} {self.valuta()}"
+    
+    def __repr__(self):
+        return f"Denaro: {self.importo()} unità di valuta {self.valuta()}"
+
+    def __hash__(self):
+        return hash( (self.importo(), self.valuta()))
+    
+    def __eq__(self, other:Any)->bool:
+        if not isinstance(other, type(self)) or \
+            hash(self)!=hash(other):
+            return False
+        return self.importo() == other.importo and \
+            self.valuta() == other.valuta()
+    
+    def __add__(self, other:Self)->Self:
+        '''
+        Somma self ad un'altra istanza di Denaro,
+        ma solo se la valuta è la stessa.
+        Restituisce una nuova istanza di Denaro
+        '''
+        if self.valuta() != other.valuta():
+            raise ValueError(f"Non posso sommare importi di diversa valuta")
+        somma:float = self.importo() + other.importo()
+        return Denaro(somma, self.valuta())
+
+class FloatDenaro(float):
+    pass
 
 
 
