@@ -28,7 +28,7 @@ class Iscrizione:
     
 
 class Corso:
-    def __new__(num_min:int|Self)->Self:
+    def __new__(cls,num_min:int|Self)->Self:
         if num_min < 0:
             raise ValueError(f"Il tempo del corso non può essere minore di 0")
-        return int.__new__(num_min)
+        return int.__new__(cls,num_min)
