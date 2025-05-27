@@ -1,5 +1,4 @@
-from myTypes import RealGZ
-from myTypes import Indirizzo
+from myTypes import *
 from datetime import datetime
 import re
 from typing import Self, Any
@@ -74,8 +73,26 @@ class Dipartimento:
     def get_nome(self)->str:
         return self._nome
     
+    def set_nome(self,nome:str)->None:
+        self._nome=nome
+    
     def get_telefono(self)->frozenset[Telefono]:
         return frozenset(self._telefono)
-    
-    def get_indirizzo(self)->frozenset[Indirizzo]:
-        return frozenset(self._indirizzo)
+
+    def add_telefono(self, new_telefono:str)->None:
+        self._telefono.add(new_telefono)
+
+    def remove_telefono(self,t:str)->None:
+        if len(self.Telefono())>1:
+            self._telefono.remove(t)
+        else:
+            raise RuntimeError("Il dipartimento deve avere almeno un numero di telefono")
+
+    def get_indirizzo(self)->Indirizzo:
+        return self._indirizzo
+
+    def set_indirizzo(self,indirizzo:Indirizzo)->None:
+        self._indirizzo=indirizzo
+
+    def remove_indirizzo(self)->None:
+        self.set_indirizzo(None)
