@@ -60,7 +60,11 @@ class IntGEZ(int):
         return int.__new__(cls,v)
     
 class RealGZ(float):
-    pass
+    def __new__(cls,v:float|int|str|bool|Self)->Self:
+        n:float=float.__new__(cls,v)
+        if n>=0:
+            return n
+        raise ValueError(f"Il valore {n} è negativo!")
 
 class CodiceFiscale(str):
     def __new__(cls, cf)->Self:
