@@ -72,3 +72,9 @@ class VideoRentalStore:
             raise Exception("Cliente non trovato")
         else:
             return list(Customer.rented_movies)
+        
+    # def get all movies 
+        # lista di tutti i film che sono stati noleggiati da tutti i clienti
+
+    def get_all_movies():
+        pass
