@@ -76,5 +76,9 @@ class VideoRentalStore:
     # def get all movies 
         # lista di tutti i film che sono stati noleggiati da tutti i clienti
 
-    def get_all_movies():
-        pass
+    def get_all_movies(self)->list[Movie,Customer]:
+        lista_filmClient:list=[]
+        for key, value in self.customers:
+            for key, value in self.movies:
+                lista_filmClient.append(self.customers[value],self.movies[value])
+        return lista_filmClient
