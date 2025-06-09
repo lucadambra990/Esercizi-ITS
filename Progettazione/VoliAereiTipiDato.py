@@ -10,8 +10,13 @@ class Volo:
     _codice:str
     _durata_minuti:int
     def __init__(self,codice:str, durata_minuti:int) -> None:
-        self._codice=codice
-        self._durata_minuti=durata_minuti
+        if codice is None:
+            raise TypeError("Il codice non può essere None")
+        elif not codice:
+            raise ValueError("Il codice non può essere vuoto")
+        else:
+            self._codice = codice
+        self.set_durata_minuti(durata_minuti)
 
 
     def __hash__(self) -> int:
@@ -19,18 +24,19 @@ class Volo:
 
 
     def __eq__(self, value)-> bool:
-        if value in  None or \
+        if value is None or \
             not isinstance(value, Volo) or \
                 hash(self)!=hash(value):
             return False
         return self._codice == value._codice and self._durata_minuti == value._durata_minuti
    
-   
+    # l'attributo codice è immutabile: il metodo set_codice non dovrebbe esserci!
+    '''
     def set_codice(self, codice:str) -> None:
         if not codice:
             raise ValueError("Il codice non può essere vuoto")
         else:
-            self._codice = codice
+            self._codice = codice'''
 
 
     def set_durata_minuti(self, durata_minuti:int) -> None:
@@ -46,7 +52,10 @@ class Volo:
     def get_durata_minuti(self) -> int:
         return self._durata_minuti
    
-
+class CodiceVolo(str):
+    # Gli oggetti di questa classe sono stringhe 
+        # che rispettano il formato dei codici dei voli: XY1234
+    pass
 
 class Aereoporto:
     _nome:str
@@ -87,6 +96,9 @@ class Aereoporto:
    
     def get_codice(self) -> str:
         return self._codice
+    
+class CodiceIATA(str):
+    pass
    
 class Compagnia:
     _nome:str
@@ -198,12 +210,11 @@ class Nazione:
     def get_nome(self)->str:
         return self._nome
     
-if __name__=="__main__":
-    volo1:Volo=Volo()
-    aereoporto1:Aereoporto=Aereoporto("Aereoporto di Napoli","AS879")
-    aereoporto2:Aereoporto=Aereoporto("Aereoporto di Malpensa","MA4544")
-    compagnia1:Compagnia=Compagnia("Luca&co",2021)
-    citta1:Citta=Citta("Napoli",123456978)
-    nazione1:Nazione=Nazione("Europa")
+volo1:Volo=Volo(None,360)
+aereoporto1:Aereoporto=Aereoporto("Aereoporto di Napoli","AS879")
+aereoporto2:Aereoporto=Aereoporto("Aereoporto di Malpensa","MA4544")
+compagnia1:Compagnia=Compagnia("Luca&co",2021)
+citta1:Citta=Citta("Napoli",123456978)
+nazione1:Nazione=Nazione("Europa")
 
-    print(f"Il volo numero {volo1.set_codice('')} è partito dall'{aereoporto1._nome} e arrivera all'{aereoporto2._nome}. Il volo durerà: {volo1.set_durata_minuti(-1)} minuti")
+print(f"Il volo numero {volo1._codice} è partito dall'{aereoporto1._nome} e arrivera all'{aereoporto2._nome}. Il volo durerà: {volo1._durata_minuti} minuti")
