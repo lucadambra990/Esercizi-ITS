@@ -38,6 +38,13 @@ class Studente:
             raise ValueError(f"Il link non è relativo a {self.nome()}ma a {esame.studente()}")
         del self._esami[esame.modulo()]
 
+    def media_voti(self)->float:
+        # try:
+        #     somma:int=0
+        #     for esame in self.esami():
+        #         print(f"\t{esame.studente().nome()}ha preso {esame.voto()}a {esame.modulo()}")
+        pass
+    
     def __repr__(self)->str:
         return f"Studente({self.nome()})"
 
