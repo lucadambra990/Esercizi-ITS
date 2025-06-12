@@ -3,19 +3,21 @@ from datetime import date
 import re
 from typing import Self, Any
 from __future__ import annotations
+from coinvolto import coinvolto
 
 class Impiegato:
     _nome: str # noto alla nascita
     _cognome: str # noto alla nascita
     _nascita: date # <<immutable>>, # noto alla nascita
     _stipendio: RealGZ # # noto alla nascita
-    _progetti:dict[Progetto,str]
+    _progetti:dict[Progetto,coinvolto._link]
 
     def __init__(self, nome:str, cognome:str, nascita: date, stipendio: RealGZ) -> None:
         self.set_nome(nome)
         self.set_cognome(cognome)
         self._nascita = nascita
         self.set_stipendio(stipendio)
+        self._progetti = dict() # perchè è certamente non noto alla nascita
 
     def nome(self) -> str:
         return self._nome
@@ -38,16 +40,18 @@ class Impiegato:
     def set_stipendio(self, stipendio: RealGZ) -> None:
         self._stipendio = stipendio
 
+    def _add_link_coinvolto(self, l:coinvolto._link)->None:
+        if l.impiegato() != self:
+            raise ValueError(f"Il link non coinvolge me, ma {l.impiegato()}")
+        if l.progetto() in self._progetti:
+            raise KeyError(f"L'impiegato è già coinvolto nel progetto {l.progetto()}")
+        self._progetti[l.progetto()] = l
+
     def __str__(self) -> str:
         return (f"{self.nome()} {self.cognome()}, "
                 f"nascita: {self.nascita()}, "
                 f"stipendio: {self.stipendio()}")
     
-    def add_progetto(self)->None:
-        pass
-    
-
-
 class afferenza:
     _dAfferenza:date
     def __init__(self,dAfferenza:date):
@@ -60,10 +64,12 @@ class Progetto:
 
     _nome: str # noto alla nascita
     _budget: RealGZ # noto alla nascita
+    _impiegato:dict[Impiegato, coinvolto._link]
 
     def __init__(self, nome: str, budget: RealGZ) -> None:
         self._nome = nome
         self._budget = budget
+        self._impiegato = dict()
 
     def nome(self) -> str:
         return self._nome
@@ -76,6 +82,18 @@ class Progetto:
 
     def get_budget(self) -> RealGZ:
         return self._budget
+    
+    def _add_link_coinvolto(self,l:coinvolto._link):
+        if l.progetto()!=self:
+            raise ValueError(f"Il link non coinvolge me, ma {l.progetto()}")
+        if l.impiegato() in self._impiegato:
+            raise KeyError(f"l'impiegato è già coninvolto nel progetto {l.progetto()}")
+        self._impiegato[l.impiegato()] = l
+
+    def _remove_link_coinvolto(self, l:coinvolto._link):
+        if l.impiegato()!=self:
+            raise ValueError(f"Il link non coinvolge me, ma {l.impiegato()}")
+        
 
     def __str__(self) -> str:
         return f"Progetto '{self.nome()}' con budget: {self.budget()}€"
