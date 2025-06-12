@@ -9,6 +9,7 @@ class Impiegato:
     _cognome: str # noto alla nascita
     _nascita: date # <<immutable>>, # noto alla nascita
     _stipendio: RealGZ # # noto alla nascita
+    _progetti:dict[Progetto,str]
 
     def __init__(self, nome:str, cognome:str, nascita: date, stipendio: RealGZ) -> None:
         self.set_nome(nome)
@@ -41,6 +42,9 @@ class Impiegato:
         return (f"{self.nome()} {self.cognome()}, "
                 f"nascita: {self.nascita()}, "
                 f"stipendio: {self.stipendio()}")
+    
+    def add_progetto(self)->None:
+        pass
     
 
 
@@ -78,6 +82,9 @@ class Progetto:
 
     def __repr__(self) -> str:
         return f"Progetto(nome={self.get_nome()}, budget={self.budget()})"
+    
+    def get_impiegato(self)->str:
+        pass
     
 
 
@@ -141,8 +148,6 @@ class Dipartimento:
 
     def set_citta(self, c: Citta) -> None:
         self._citta = c
-
-
 
     def __repr__(self) -> str:
         return f'Dipartimento({self._nome}, {self._telefoni}, {self._indirizzo}, {self._citta})'
