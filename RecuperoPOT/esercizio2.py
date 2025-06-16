@@ -16,7 +16,9 @@ print(lista)
 
 occ=0
 for i in lista:
-    pass
+    if i == x:
+        occ+=1
+print(f"Il numero {x} si ripete {occ} volte")
 
 for i in lista:
     if x in lista:
