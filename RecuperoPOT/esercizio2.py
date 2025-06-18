@@ -10,7 +10,7 @@ while True:
         not isinstance(x,int) and not isinstance(s,int)
     except ValueError as error:
         print(f"{error}, puoi inserire solo numeri interi positivi! ")
-
+# esercizio fatto ma da fare con due funzioni, una che controlla x e faccia il controllo se è valido
 
 print(lista)
 
