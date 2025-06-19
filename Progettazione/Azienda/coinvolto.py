@@ -3,11 +3,11 @@ from typing import TYPE_CHECKING
 from __future__ import annotations
 
 if TYPE_CHECKING:
-    from aziendaTipiDato import Impiegato
-    from aziendaTipiDato import Progetto
+    from Progettazione.Azienda.aziendaTipiDato import Impiegato
+    from Progettazione.Azienda.aziendaTipiDato import Progetto
 
 
-class coinvolto:
+class coinvolto: # classe factory (serve per creare oggetti della classe interna ai link !!NON DELLA CLASSE STESSA!!)
 
     @staticmethod
     def add(cls,progetto:Progetto,impiegato:Impiegato,data:date):

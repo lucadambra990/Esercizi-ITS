@@ -3,7 +3,7 @@ from datetime import date
 import re
 from typing import Self, Any
 from __future__ import annotations
-from coinvolto import coinvolto
+from Progettazione.Azienda.coinvolto import coinvolto
 
 class Impiegato:
     _nome: str # noto alla nascita
