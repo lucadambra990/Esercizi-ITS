@@ -1,9 +1,6 @@
 class posMil:
     def __init__(self,nome:str):
-        self._nome:str=""
-
-    def setPos(self, posMil:str):
-        self._nome = posMil
+        self._nome=nome
         
     def getPos(self):
         return self._nome
