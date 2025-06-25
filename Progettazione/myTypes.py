@@ -1,3 +1,4 @@
+from enum import StrEnum, auto
 from typing import Self, Any
 import re
 
@@ -39,6 +40,16 @@ class IntGE1900(int):
 		n: int = super().__new__(cls, v) # prova a convertire v in un int
 
 		if n >= 1900:
+			return n
+
+		raise ValueError(f"Il valore {n} è minore di 1900!")
+	
+class IntGEZ(int):
+	# Tipo di dato specializzato Intero >= 0
+	def __new__(cls, v: float|int|str|bool|Self) -> Self:
+		n: int = super().__new__(cls, v) # prova a convertire v in un int
+
+		if n >= 0:
 			return n
 
 		raise ValueError(f"Il valore {n} è minore di 1900!")
@@ -208,3 +219,13 @@ class Email(str):
 , v):
 			return super().__new__(cls, v)
 		raise ValueError(f"{v} non è un indirizzo email valido")
+
+
+class Genere(StrEnum):
+	uomo = auto()
+	donna = auto()
+
+class Ruolo(StrEnum):
+	segretario = auto()
+	direttore = auto()
+	progettista = auto()
