@@ -4,7 +4,7 @@ from posizioneMili import *
 class Persona:
     _genere: Genere
     _maternita: IntGEZ|None
-    _posizione_militare:posMil
+    _posizione_militare:posMil|None
     _nome:str
     _cognome:str
     _codice_fiscale:CodiceFiscale
