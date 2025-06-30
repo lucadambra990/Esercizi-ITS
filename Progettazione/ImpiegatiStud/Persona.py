@@ -21,6 +21,7 @@ class Persona:
         
 
     def diventa_donna(self, maternita: IntGEZ) -> None:
+        # se è già donna, errore
         self._maternita = maternita
         self.__dimentica_uomo()
 
@@ -59,5 +60,8 @@ class Persona:
         return self.set_dataNascita()
     
     
-
+    def set_maternita(self, altriAttributi):
+        # errore se uomo
+        pass
+    
     
