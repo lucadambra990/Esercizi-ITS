@@ -21,16 +21,21 @@ class Persona:
         
 
     def diventa_donna(self, maternita: IntGEZ) -> None:
-        # se è già donna, errore
-        self._maternita = maternita
-        self.__dimentica_uomo()
+        if self._genere == Genere.donna:
+            raise ValueError("La persona inserita è già una donna")
+        else:
+            self._maternita = maternita
+            self.__dimentica_uomo()
 
     def __dimentica_uomo(self):
         self._posizione_militare = None
 
     def diventa_uomo(self, posMil:posMil)-> None:
-        self._posizione_militare = posMil
-        self.__dimentica_donna()
+        if self._genere == Genere.uomo:
+            raise ValueError("La persona inserita è già un uomo")
+        else:
+            self._posizione_militare = posMil
+            self.__dimentica_donna()
 
     def __dimentica_donna(self):
         self._maternita = None
@@ -60,8 +65,8 @@ class Persona:
         return self.set_dataNascita()
     
     
-    def set_maternita(self, altriAttributi):
-        # errore se uomo
-        pass
-    
+    def set_maternita(self, maternita:int):
+        if self._genere == Genere.uomo:
+            raise ValueError("Non puoi dare un valore all'attributo maternità agli uomini")
+        self._maternita = maternita
     
