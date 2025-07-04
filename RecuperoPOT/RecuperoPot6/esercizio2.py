@@ -1,5 +1,5 @@
 lista_nomi:list[str] = []
-while len(lista_nomi)<5:
+while len(lista_nomi)<=30:
     name = str(input("Inserisci dei nomi: "))
     if not name or len(name) > 20:
         print("Il nome che inserisci non può essere una stringa vuota o non deve superare i 20 caratteri")
