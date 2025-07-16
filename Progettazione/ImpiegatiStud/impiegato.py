@@ -15,4 +15,3 @@ class Impiegatp(Persona):
 
     def setRuolo(self, ruolo:Ruolo):
         self._ruolo = ruolo
-     
