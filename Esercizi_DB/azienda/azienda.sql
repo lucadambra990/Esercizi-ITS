@@ -24,12 +24,16 @@ create table dipartimento(
 		references
 			impiegato(id)
 	-- v.incl id occore almeno una volta in dip_tel (dipartimento)
+	-- v.incl id occore almeno una volta in direzione (dipartimento)
 );
+
+
 
 create table afferenza(
 	impiegato integer not null,
 	dipartimento integer not null,
 	data_afferenza date not null,
+	primary key(impiegato),
 	foreign key(impiegato)
 		references
 			impiegato(id),
@@ -38,10 +42,24 @@ create table afferenza(
 			dipartimento(id)
 );
 
+
+create table direzione(
+	impiegato integer not null,
+	dipartimento integer not null,
+	primary key(dipartimento),
+	foreign key (impiegato)
+		references
+			impiegato(id),
+	foreign key (dipartimento)
+		references
+			dipartimento(id)
+);
+
+
 create table progetto(
 	id integer primary key,
 	nome varchar not null,
-	budget RealGEZ
+	budget RealGEZ not null
 );
 
 create table lavora(
