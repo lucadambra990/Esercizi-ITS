@@ -20,6 +20,7 @@ create table dipartimento(
 	impiegato integer not null,
 	nome varchar not null,
 	indirizzo indirizzo,
+	-- accorpa l'associazione dirige
 	foreign key(impiegato)
 		references
 			impiegato(id)
@@ -43,17 +44,17 @@ create table afferenza(
 );
 
 
-create table direzione(
-	impiegato integer not null,
-	dipartimento integer not null,
-	primary key(dipartimento),
-	foreign key (impiegato)
-		references
-			impiegato(id),
-	foreign key (dipartimento)
-		references
-			dipartimento(id)
-);
+-- create table direzione(
+--	impiegato integer not null,
+--	dipartimento integer not null,
+--	primary key(dipartimento),
+--	foreign key (impiegato)
+--		references
+--			impiegato(id),
+--	foreign key (dipartimento)
+--		references
+--			dipartimento(id)
+-- );
 
 
 create table progetto(
@@ -63,9 +64,9 @@ create table progetto(
 );
 
 create table lavora(
-	id integer primary key,
 	impiegato integer not null,
 	progetto integer not null,
+	primary key(impiegato,progetto),
 	foreign key(impiegato)
 		references 
 			impiegato(id),
