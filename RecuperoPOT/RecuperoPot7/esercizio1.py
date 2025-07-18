@@ -6,7 +6,7 @@ def baricentro(v:list[int])->int|None:
 
 def printResult(v:list[int])->int|None:
     baricentro(v)
-    if baricentro is None:
-        print(f"Il baricentro del vettore v={v} non esiste")
-    else:
-        print(f"Il baricentro del vettor v={v} esiste ed è dato dall'indice i")
+    
+
+baricentro([1,2,3,3,2,-1])
+printResult([1,2,3,3,2,-1])
