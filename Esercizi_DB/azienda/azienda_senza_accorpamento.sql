@@ -48,7 +48,7 @@ create table afferenza (
     foreign key (impiegato)
         references impiegato(id),
     foreign key (dipartimento)
-        references dipartimento(id),
+        references dipartimento(id)
 );
 
 create table direzione (

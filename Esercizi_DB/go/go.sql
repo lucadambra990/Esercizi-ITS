@@ -8,7 +8,13 @@ CREATE DOMAIN Stringa as varchar;
 
 CREATE DOMAIN IntGEZ as integer;
 
+create type Indirizzo as(
+	via varchar,
+	civico varchar
+);
 
+create domain Real_0_10 as real
+	check(value>=0 and value <=10);
 
 
 
@@ -36,7 +42,7 @@ create table citta(
 	regione varchar not null,
 	nazione varchar not null,
 	foreign key(regione, nazione)
-		references regione(nome, nazione)
+		references regione(nome, nazione),
 	unique (nome,regione,nazione)
 );
 
@@ -44,10 +50,10 @@ create table giocatore(
 	nickname varchar primary key,
 	nome varchar not null,
 	cognome varchar not null,
-	indirizzo indirizzo not null,
-	rank IntGZ not null,
+	indirizzo Indirizzo not null,
+	rank IntGEZ not null,
 	-- accorpo gioc_cit
-	citta integer not null
+	citta integer not null,
 	foreign key (citta)
 		references citta(id)
 );
@@ -72,17 +78,17 @@ create table partita(
 	-- accorpo 'segue'
 	regole varchar not null,
 	foreign key(regole)
-		references regole(nome)
+		references regole(nome),
 
 	-- accorpo part_torneo
 	torneo integer,
 	foreign key(torneo)
-		references torneo(id)
+		references torneo(id),
 
 	-- accorpo 'bianco'
 	bianco varchar not null,
 	foreign key(bianco)
-		references giocatore(nickname),
+		references giocatore(nickname)
 	-- scelgo di non accorpare nero, per motivazioni didattiche
 	-- v. incl. (id) occore in
 			-- nero (partita) --> è implementabile con una FK
