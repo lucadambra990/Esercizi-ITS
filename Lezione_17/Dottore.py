@@ -3,9 +3,8 @@ from Persona import *
 class Dottore(Persona):
     _specializzazione:str
     _parcella:float
-    def __init__(self, first_name:str, last_name:str,age:int, specializzazione:str, parcella:float):
+    def __init__(self, first_name:str, last_name:str, specializzazione:str, parcella:float):
         super().__init__(first_name,last_name)
-        self.setAge(age)
         self.setSpecialization(specializzazione)
         self.setParcel(parcella)
         
@@ -38,9 +37,14 @@ class Dottore(Persona):
         print(f"Sono un medico {self.getSpecializzazion()}")
 
 if __name__ == "__main__":
-    dottore:Dottore = Dottore("Luca","D'Ambra",22,"Ginecologo",150.3)
+    dottore:Dottore = Dottore("Luca","D'Ambra","Ginecologo",150.3)
+    dottore.setAge(31)
+    print("--------------------------------------")
     dottore.isAValidDoctor()
+    print("--------------------------------------")
     dottore.doctorGreet()
+    print("--------------------------------------")
     print(dottore.getSpecializzazion())
+    print("--------------------------------------")
     print(dottore.getParcel())
    

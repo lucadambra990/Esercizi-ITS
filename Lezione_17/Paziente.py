@@ -14,7 +14,7 @@ class Paziente(Persona):
         return self._codice
     
     def patientInfo(self):
-        print(f"Paziente: {Persona.getName(self)} {Persona.getLastName(self)}\n ID:{self._codice}")
+        print(f"Paziente: {Persona.getName(self)} {Persona.getLastName(self)}\nID:{self._codice}")
 
 
 if __name__ == "__main__":
