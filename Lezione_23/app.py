@@ -1,21 +1,20 @@
-import numpy as np
+from flask import Flask, url_for
 
-def main():
-    matrix = np.array([
-        [1,2,3],
-        [4,5,6],
-        [7,8,9]
-    ])
+app = Flask(__name__)
 
-    print("Matrice di partenza: ")
-    print(matrix)
+@app.route('/')
+def home()->str:
+    return "<h3>Hello, world!</h3>"
 
-    print("\n\nMatrice trasportata: ")
-    transposed_matrix = matrix.T
-    print(transposed_matrix)
+@app.route('/user/<string:username>/age/<int:age>')
+def show_user_profile(username:str,age:int)->str:
+    return f"Profilo di {username}: {age} anni"
 
+@app.route('post/<int:post_id>')
+def show_post(post_id:int)->str:
+    return f"Post {post_id}"
 
-
-
-if __name__ == '__main__':
-    main()
+with app.test_request_context():
+    print(url_for('home'))
+    print(url_for('show_user_profile',username='John Doe', age=30))
+    print(url_for('show_post',post_id=8))
