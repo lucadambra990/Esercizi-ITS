@@ -1,3 +1,4 @@
+import sys
 
 import requests
 # va installato con 'pip install requests'
@@ -15,7 +16,7 @@ headers = {
         }
 
 def _show_response(response: requests.Response, n:int = 1):
-    print(f"\n\n{'=' * 10} TEST {n} - {response.request.method} {response.url} {'=' * 10}")
+    print(f"\n\n{"=" * 10} TEST {n} - {response.request.method} {response.url} {"=" * 10}")
     print(f"\nRESPONSE:\n"
           f"- HTTP Status Code: {response.status_code}\n"
           f"- JSON CONTENT:")
@@ -57,9 +58,13 @@ def test_get_citta(id_citta: int, n:int):
     response = requests.get(url=f"http://localhost:5000/citta/{id_citta}", headers=headers)
     _show_response(response, n=n)
 
-def test_create_nazione(nome_nazione: str, n:int):
-    response = requests.post(url=f"http://localhost:5000/nazioni", headers=headers,
-                             json={"nome": nome_nazione})
+def test_create_nazione(nome_nazione: str, fondazione: int, n:int):
+
+    response = requests.post(url=f"http://localhost:5000/nazioni",
+                             headers=headers,
+                             json={"nome": nome_nazione, "fondazione": fondazione})
+
+
     response.encoding = "utf-8"
     _show_response(response, n)
 
@@ -72,4 +77,4 @@ if __name__ == "__main__":
     test_get_nazione("Jamaica", 6)
     test_get_nazione("Francia", 7)
     test_get_citta(165, 8)
-    test_create_nazione(nome_nazione="Jamaica", n=9)
+    test_create_nazione(nome_nazione="Jamaica", fondazione=1962, n=9)

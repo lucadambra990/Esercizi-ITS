@@ -1,24 +1,25 @@
 {
     "Nazione": {
         "Italia": {
-            "nome": "Italia"
+            "nome": "Italia",
+            "fondazione": 1861
         },
         "Francia": {
-            "nome": "Francia"
+            "nome": "Francia",
+            "fondazione": 1789
         },
         "Jamaica": {
-            "nome": "Jamaica"
+            "nome": "Jamaica",
+            "fondazione": 1962
         }
     },
     "Citta": {
-        "1": {
-            "id": 1,
+        "Roma": {
             "nome": "Roma",
             "n_abitanti": 2746984,
             "nazione": "Italia"
         },
-        "2": {
-            "id": 2,
+        "Parigi": {
             "nome": "Parigi",
             "n_abitanti": 2200000,
             "nazione": "Francia"
