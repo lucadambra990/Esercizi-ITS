@@ -15,7 +15,7 @@ headers = {
         }
 
 def _show_response(response: requests.Response, n:int = 1):
-    print(f"\n\n{"=" * 10} TEST {n} - {response.request.method} {response.url} {"=" * 10}")
+    print(f"\n\n{'=' * 10} TEST {n} - {response.request.method} {response.url} {'=' * 10}")
     print(f"\nRESPONSE:\n"
           f"- HTTP Status Code: {response.status_code}\n"
           f"- JSON CONTENT:")
