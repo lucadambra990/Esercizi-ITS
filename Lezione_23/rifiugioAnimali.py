@@ -51,7 +51,7 @@ class Cat(Animal):
         return 100 + (self.age_years * 30)
     
     def info(self):
-        return super().info(self.favorite_toy,self.indoor_only)
+        return {"id":self.id,"name":self.name,"species":self.species,"age_years":self.age_years,"weight_kg":self.weight_kg, "favorite_toy":self.favorite_toy, "indoor_only":self.indoor_only}
     
 class Shelter():
     def __init__(self):
@@ -70,7 +70,7 @@ class Shelter():
         return None
     
     def list_all(self):
-        return [Animal.info() for animal in self.animals.values()]
+        return [animal.info() for animal in self.animals.values()]
     
     def is_adopted(self,animal_id):
         if animal_id in self.adoptions:

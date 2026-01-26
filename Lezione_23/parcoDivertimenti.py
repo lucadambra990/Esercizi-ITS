@@ -1,74 +1,76 @@
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
+
 
 class Ride(ABC):
-    def __init__(self,id:str,name:str,min_height_cm:int)->None:
-        self.id=id
-        self.name=name
-        self.min_height_cm=min_height_cm
-    
+    def __init__(self, id: int, name: str, min_height_cm: int) -> None:
+        self.id = id
+        self.name = name
+        self.min_height_cm = min_height_cm
+
     @abstractmethod
-    def category(self):
+    def category(self) -> str:
         pass
 
     @abstractmethod
-    def base_wait(self):
+    def base_wait(self) -> int:
         pass
 
-    def info(self)->dict:
-        return {"id":self.id,
-                    "name":self.name,
-                        "min_height":self.min_height_cm,
-                            "category":self.category(),
-                                "time":self.base_wait()}
-        
-    def wait_time(self,crowd_factor:float=1.0):
-        return round(self.base_wait() * crowd_factor,2)
+    def info(self) -> dict:
+        return {
+            "id": self.id,
+            "name": self.name,
+            "min_height": self.min_height_cm,
+            "category": self.category(),
+            "base_wait": self.base_wait()
+        }
+
+    def wait_time(self, crowd_factor: float = 1.0) -> float:
+        return round(self.base_wait() * crowd_factor, 2)
 
 
 class RollerCoaster(Ride):
-    def __init__(self, id, name, min_height_cm,inversions:int):
+    def __init__(self, id: int, name: str, min_height_cm: int, inversions: int):
         super().__init__(id, name, min_height_cm)
-        self.inversions=inversions
-    
-    def category(self):
-        return "roller_coaster"
-    
-    def base_wait(self):
-        return super().base_wait()
-    
-    def info(self):
-        info_inv = super().info()
-        info_inv["inversions"] = self.inversions
-        return info_inv
-    
-class Carousel(Ride):
-    def __init__(self, id, name, min_height_cm,animals:list[str]):
-        super().__init__(id, name, min_height_cm)
-        self.animals=animals
+        self.inversions = inversions
 
-    def category(self):
+    def category(self) -> str:
+        return "roller_coaster"
+
+    def base_wait(self) -> int:
+        return 30 + self.inversions * 5
+
+    def info(self) -> dict:
+        data = super().info()
+        data["inversions"] = self.inversions
+        return data
+
+
+class Carousel(Ride):
+    def __init__(self, id: int, name: str, min_height_cm: int, animals: list[str]):
+        super().__init__(id, name, min_height_cm)
+        self.animals = animals
+
+    def category(self) -> str:
         return "family"
-    
-    def base_wait(self):
-        return super().base_wait()
-    
-    def info(self):
-        info_animals = super().info()
-        info_animals["animals"] = self.animals
+
+    def base_wait(self) -> int:
+        return 10
+
+    def info(self) -> dict:
+        data = super().info()
+        data["animals"] = self.animals
+        return data
+
 
 class Park:
-    def __init__(self,rides:dict[str,Ride] = {}):
-        self.rides = rides
+    def __init__(self):
+        self.rides: dict[int, Ride] = {}
 
-    def add(self,ride):
-        self.rides[ride.id]=ride
+    def add(self, ride: Ride) -> None:
+        self.rides[ride.id] = ride
 
-    def get(self,ride_id:str) -> Ride:
-        if ride_id in self.rides:
-            return self.rides[ride_id]
-        return None
-    
+    def get(self, ride_id: int) -> Ride | None:
+        return self.rides.get(ride_id)
+
     def list_all(self) -> list[Ride]:
-        return list(self.rides.values())
-
-    
+        return [ride.info() for ride in self.rides.values()]
